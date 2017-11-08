@@ -1,0 +1,62 @@
+/**
+ * @file 全局通用任务配置
+ *
+ * @author liubin29@baidu.com
+ * 2015年10月27日
+ */
+
+// http://nightwatchjs.org/guide#settings-file
+module.exports = {
+    'src_folders': ['test'],
+    'output_folder': 'test',
+    'custom_commands_path': ['node_modules/nightwatch-helpers/commands'],
+    'custom_assertions_path': ['node_modules/nightwatch-helpers/assertions'],
+
+    'selenium': {
+        'start_process': true,
+        'server_path': 'node_modules/selenium-server/lib/runner/selenium-server-standalone-2.53.1.jar',
+        'host': '127.0.0.1',
+        'port': 4444,
+        'cli_args': {
+            'webdriver.chrome.driver': require('chromedriver').path
+        }
+    },
+
+    'test_settings': {
+        'default': {
+            'selenium_port': 4444,
+            'selenium_host': 'localhost',
+            'silent': true,
+            'screenshots': {
+                'enabled': true,
+                'on_failure': true,
+                'on_error': false,
+                'path': 'test'
+            }
+        },
+
+        'chrome': {
+            'desiredCapabilities': {
+                'browserName': 'chrome',
+                'javascriptEnabled': true,
+                'acceptSslCerts': true
+            }
+        },
+
+        'firefox': {
+            'desiredCapabilities': {
+                'browserName': 'firefox',
+                'javascriptEnabled': true,
+                'acceptSslCerts': true
+            }
+        },
+
+        'phantomjs': {
+            'desiredCapabilities': {
+                'browserName': 'phantomjs',
+                'javascriptEnabled': true,
+                'acceptSslCerts': true
+            }
+        }
+    }
+};
